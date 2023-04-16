@@ -11,6 +11,10 @@ const authRoutes = (app) => {
 
   // redirect (callback) URL
   app.get('/auth/google/callback', passport.authenticate('google'))
+
+  app.get('/api/currentUser', (req, res) => {
+    res.send(req.user)
+  })
 }
 
 export default authRoutes
