@@ -1,6 +1,6 @@
-import passport from 'passport'
+const passport = require('passport')
 
-const authRoutes = (app) => {
+module.exports = (app) => {
   // enter to OAuth flow
   app.get(
     '/auth/google',
@@ -10,7 +10,11 @@ const authRoutes = (app) => {
   )
 
   // redirect (callback) URL
-  app.get('/auth/google/callback', passport.authenticate('google'))
+  app.get(
+    '/auth/google/callback',
+    passport.authenticate('google'),
+    (req, res) => res.redirect('/surveys')
+  )
 
   app.get('/api/logout', (req, res) => {
     req.logout()
@@ -21,5 +25,3 @@ const authRoutes = (app) => {
     res.send(req.user)
   })
 }
-
-export default authRoutes

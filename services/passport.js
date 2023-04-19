@@ -1,9 +1,7 @@
-import mongoose from 'mongoose'
-import passport from 'passport'
-import { Strategy as GoogleStrategy } from 'passport-google-oauth20'
-import * as dotenv from 'dotenv'
-
-const { parsed: keys } = dotenv.config()
+const passport = require('passport')
+const GoogleStrategy = require('passport-google-oauth20').Strategy
+const mongoose = require('mongoose')
+const keys = require('../config/keys')
 
 // pull out model class
 const User = mongoose.model('users')

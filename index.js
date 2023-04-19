@@ -1,13 +1,10 @@
-import express from 'express'
-import './models/User.js'
-import './services/passport.js'
-import authRoutes from './routes/authRoutes.js'
-import mongoose from 'mongoose'
-import cookieSession from 'cookie-session'
-import * as dotenv from 'dotenv'
-import passport from 'passport'
-
-const { parsed: keys } = dotenv.config()
+const express = require('express')
+const mongoose = require('mongoose')
+const cookieSession = require('cookie-session')
+const passport = require('passport')
+const keys = require('./config/keys')
+require('./models/User')
+require('./services/passport')
 
 const app = express()
 
@@ -21,7 +18,7 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
-authRoutes(app)
+require('./routes/authRoutes')(app)
 
 mongoose.connect(keys.mongoURI)
 
