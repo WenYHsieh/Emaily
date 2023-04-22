@@ -1,21 +1,23 @@
-import { Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import './app.css'
+import Header from './Header'
 
-const Header = () => <div>Header</div>
 const Dashboard = () => <div>Dashboard</div>
 const SurveyNew = () => <div>SurveyNew</div>
 const Landing = () => <div>Landing</div>
 
 const App = () => {
   return (
-    <div className='App'>
-      <h1>Hello</h1>
-      <Routes>
-        <Route path='/' element={<Landing />} />
-        <Route path='/surveyNew' element={<SurveyNew />} />
-        <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/header' element={<Header />} />
-      </Routes>
-    </div>
+    <BrowserRouter>
+      <>
+        <Header />
+        <Routes>
+          <Route path='/' element={<Landing />} />
+          <Route path='/surveys' element={<Dashboard />} />
+          <Route path='/surveys/new' element={<SurveyNew />} />
+        </Routes>
+      </>
+    </BrowserRouter>
   )
 }
 
