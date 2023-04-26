@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { storesType } from '../reducers'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   const { currentUser } = useSelector((state: storesType) => ({
@@ -24,11 +25,13 @@ const Header = () => {
         )
     }
   }
-  console.log(currentUser)
+
   return (
     <header className='bg-white'>
       <nav className='mx-auto flex items-center justify-between p-4 lg:px-8 bg-indigo-300 text-gray-900'>
-        <div className='text-lg font-bold'>Emaily</div>
+        <Link to={`${currentUser ? '/surveys' : '/'}`}>
+          <a className='text-lg font-bold'>Emaily</a>
+        </Link>
         {renderLoginBlock()}
       </nav>
     </header>
