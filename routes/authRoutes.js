@@ -13,12 +13,13 @@ module.exports = (app) => {
   app.get(
     '/auth/google/callback',
     passport.authenticate('google'),
+    // call after authentication completed
     (req, res) => res.redirect('/surveys')
   )
 
   app.get('/api/logout', (req, res) => {
     req.logout()
-    res.send(req.user)
+    res.redirect('/')
   })
 
   app.get('/api/currentUser', (req, res) => {
