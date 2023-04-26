@@ -5,10 +5,10 @@ import { useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '..'
 import { getCurrentUser } from '../reducers/authReducer'
+import Landing from './Landing'
 
 const Dashboard = () => <div>Dashboard</div>
 const SurveyNew = () => <div>SurveyNew</div>
-const Landing = () => <div>Landing</div>
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>()
