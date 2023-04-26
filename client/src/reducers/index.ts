@@ -5,4 +5,6 @@ const appReducer = combineReducers({
   auth: authReducer,
 })
 
+export type storesType = ReturnType<typeof appReducer>
+
 export default appReducer
