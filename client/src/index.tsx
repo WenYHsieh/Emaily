@@ -13,7 +13,7 @@ export const store = configureStore({
 })
 
 export type AppDispatch = typeof store.dispatch
-console.log(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
