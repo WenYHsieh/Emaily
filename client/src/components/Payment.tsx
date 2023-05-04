@@ -17,7 +17,7 @@ const Payment = () => {
       locale='en'
     >
       <button className='text-gray-200 border rounded-sm border-solid border-green-600 p-2.5 bg-green-500 shadow hover:bg-green-400 transition-color duration-200'>
-        Add credits
+        ADD CREDITS
       </button>
     </StripeCheckout>
   )

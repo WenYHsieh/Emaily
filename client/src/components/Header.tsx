@@ -22,6 +22,7 @@ const Header = () => {
         return (
           <>
             <Payment />
+            <div className='pl-3'> Credits: {currentUser.credits}</div>
             <a
               href='/api/logout'
               className='text-gray-900 hover:text-gray-700 pl-3'
@@ -39,7 +40,9 @@ const Header = () => {
         <Link to={`${currentUser ? '/surveys' : '/'}`}>
           <a className='text-lg font-bold'>Emaily</a>
         </Link>
-        <div>{renderLoginBlock()}</div>
+        <div className='flex justify-center items-center'>
+          {renderLoginBlock()}
+        </div>
       </nav>
     </header>
   )
