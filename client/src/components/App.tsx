@@ -12,13 +12,8 @@ const SurveyNew = () => <div>SurveyNew</div>
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>()
-  const isFirstRender = useRef(true)
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false
-      return
-    }
     dispatch(getCurrentUser())
   }, [])
 
