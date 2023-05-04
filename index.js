@@ -25,5 +25,15 @@ require('./routes/billingRoutes')(app)
 
 mongoose.connect(keys.mongoURI)
 
+if (process.env.NODE_ENV === 'production') {
+  // serve assets
+  app.use(express.static('client/dist'))
+
+  // serve not express route
+  const path = require('path')
+  app.get('*', (_, res) => {
+    res.sendFile(path.resolve(__direname, 'client', 'dist', 'index.html'))
+  })
+}
 const PORT = process.env.PORT || '8888'
 app.listen(PORT)
