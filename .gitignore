@@ -3,5 +3,6 @@ dev.js
 
 .env.development
 .env.production
+.env
 
 dist
