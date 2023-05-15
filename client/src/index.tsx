@@ -5,6 +5,8 @@ import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import appReducer from './reducers'
 import reduxThunk from 'redux-thunk'
+import axios from 'axios'
+window.axios = axios
 
 export const store = configureStore({
   reducer: appReducer,
