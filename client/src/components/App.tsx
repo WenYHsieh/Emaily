@@ -6,9 +6,8 @@ import { useDispatch } from 'react-redux'
 import { AppDispatch } from '..'
 import { getCurrentUser } from '../reducers/authReducer'
 import Landing from './Landing'
-
-const Dashboard = () => <div>Dashboard</div>
-const SurveyNew = () => <div>SurveyNew</div>
+import Dashboard from './Dashboard'
+import SurveyNew from './surveys/SurveyNew'
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>()

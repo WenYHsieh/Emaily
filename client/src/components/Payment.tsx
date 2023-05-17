@@ -16,7 +16,7 @@ const Payment = () => {
       stripeKey={import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY}
       locale='en'
     >
-      <button className='text-gray-200 border rounded-sm border-solid border-green-600 p-2.5 bg-green-500 shadow hover:bg-green-400 transition-color duration-200'>
+      <button className='text-white rounded-lg px-[16px] py-[8px] bg-[#1677FF] shadow hover:bg-[#3F96FE] transition-color duration-200'>
         ADD CREDITS
       </button>
     </StripeCheckout>
