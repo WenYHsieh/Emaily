@@ -36,7 +36,7 @@ const Header = () => {
 
   return (
     <header className='bg-white'>
-      <nav className='mx-auto flex items-center justify-between p-4 lg:px-8 bg-indigo-300 text-gray-900'>
+      <nav className='mx-auto flex items-center justify-between p-4 lg:px-8 bg-indigo-200 shadow-lg text-gray-900'>
         <Link to={`${currentUser ? '/surveys' : '/'}`}>
           <a className='text-lg font-bold'>Emaily</a>
         </Link>
