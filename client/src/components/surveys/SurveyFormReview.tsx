@@ -1,19 +1,24 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { storesType } from '../../reducers'
-import { ISurveyForm, formField } from './formField'
+import { formField } from './formField'
 import _ from 'lodash'
+import { submitSurvey } from '../../reducers/authReducer'
+import { AppDispatch } from '../..'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {
   setShowReview: React.Dispatch<React.SetStateAction<boolean>>
 }
 const SurveyFormReview = (props: Props) => {
+  const navigate = useNavigate()
   const { setShowReview } = props
+  const dispatch = useDispatch<AppDispatch>()
   const { surveyForm } = useSelector((state: storesType) => ({
     ...state.form,
   }))
+  const { values: formData } = surveyForm as any
 
   const renderContent = () => {
-    const { values: formData } = surveyForm as any
     return _.map(formField, ({ name, label }) => {
       return (
         <div key={name} className='flex flex-col field'>
@@ -41,6 +46,9 @@ const SurveyFormReview = (props: Props) => {
         <button
           type='submit'
           className='mt-[16px] text-white rounded-lg px-[16px] py-[8px] bg-[#1677FF] shadow hover:bg-[#3F96FE] transition-color duration-200'
+          onClick={() => {
+            dispatch(submitSurvey({ formData, navigate }))
+          }}
         >
           SEND SURVEY
         </button>

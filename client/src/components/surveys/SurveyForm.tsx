@@ -1,4 +1,4 @@
-import { Field, InjectedFormProps, SubmitHandler, reduxForm } from 'redux-form'
+import { Field, SubmitHandler, reduxForm } from 'redux-form'
 import SurveyField from './SurveyField'
 import _ from 'lodash'
 import { Link } from 'react-router-dom'
@@ -13,7 +13,7 @@ type Props = {
 const validate = (values: ISurveyForm) => {
   let errors = {} as ISurveyForm
 
-  errors.emails = validateEmail(values.emails)
+  errors.recipients = validateEmail(values.recipients)
 
   _.map(formField, ({ name }) => {
     if (!values[name]) {

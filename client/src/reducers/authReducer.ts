@@ -1,5 +1,6 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
+import { ISurveyForm } from '../components/surveys/formField'
 
 const initialState = { currentUser: null, status: '', error: null } as {
   currentUser: { googleId: string; credits: number } | null | false
@@ -25,15 +26,24 @@ export const handleToken = createAsyncThunk(
   }
 )
 
+// 送出 survey (發信)
+export const submitSurvey = createAsyncThunk(
+  'auth/submitSurvey',
+  async (data: { formData: ISurveyForm; navigate: Function }) => {
+    const { formData, navigate } = data
+
+    const response = await axios.post('/api/surveys', formData)
+    navigate('/surveys')
+    return response.data || false
+  }
+)
+
 export const slice = createSlice({
   name: 'auth',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getCurrentUser.pending, (state) => {
-        state.status = 'loading'
-      })
       .addCase(getCurrentUser.fulfilled, (state, action) => {
         state.status = 'succeeded'
         state.currentUser = action.payload
@@ -42,9 +52,9 @@ export const slice = createSlice({
         state.status = 'succeeded'
         state.currentUser = action.payload
       })
-      .addCase(getCurrentUser.rejected, (state, action) => {
-        state.status = 'failed'
-        state.error = action.error.message
+      .addCase(submitSurvey.fulfilled, (state, action) => {
+        state.status = 'succeeded'
+        state.currentUser = action.payload
       })
   },
 })
