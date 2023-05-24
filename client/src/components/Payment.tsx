@@ -1,5 +1,5 @@
 import StripeCheckout from 'react-stripe-checkout'
-import { handleToken } from '../reducers/authReducer'
+import { handleToken } from '../reducers/funcReducer'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '..'
 

@@ -1,16 +1,22 @@
-import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { ISurveyForm } from '../components/surveys/formField'
 
-const initialState = { currentUser: null, status: '', error: null } as {
+const initialState = {
+  currentUser: null,
+  status: '',
+  error: null,
+  surveys: new Array(),
+} as {
   currentUser: { googleId: string; credits: number } | null | false
+  surveys: Array<any>
   status: string
   error: any
 }
 
 // 取得目前登入使用者的資料
 export const getCurrentUser = createAsyncThunk(
-  'auth/getCurrentUser',
+  'func/getCurrentUser',
   async () => {
     const response = await axios.get('/api/currentUser')
     return response.data || false
@@ -19,7 +25,7 @@ export const getCurrentUser = createAsyncThunk(
 
 // 成功付款後，將 stripe 回的 token 傳到後端，將回傳的使用者資料存起來
 export const handleToken = createAsyncThunk(
-  'auth/handleToken',
+  'func/handleToken',
   async (token: object) => {
     const response = await axios.post('/api/stripe', token)
     return response.data || false
@@ -28,7 +34,7 @@ export const handleToken = createAsyncThunk(
 
 // 送出 survey (發信)
 export const submitSurvey = createAsyncThunk(
-  'auth/submitSurvey',
+  'func/submitSurvey',
   async (data: { formData: ISurveyForm; navigate: Function }) => {
     const { formData, navigate } = data
 
@@ -38,8 +44,15 @@ export const submitSurvey = createAsyncThunk(
   }
 )
 
+//  取得 survey 列表
+export const getSurveys = createAsyncThunk('func/getSurveys', async () => {
+  const response = await axios.get('/api/surveys')
+
+  return response.data || false
+})
+
 export const slice = createSlice({
-  name: 'auth',
+  name: 'func',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -55,6 +68,10 @@ export const slice = createSlice({
       .addCase(submitSurvey.fulfilled, (state, action) => {
         state.status = 'succeeded'
         state.currentUser = action.payload
+      })
+      .addCase(getSurveys.fulfilled, (state, action) => {
+        state.status = 'succeeded'
+        state.surveys = action.payload
       })
   },
 })

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { storesType } from '../../reducers'
 import { formField } from './formField'
 import _ from 'lodash'
-import { submitSurvey } from '../../reducers/authReducer'
+import { submitSurvey } from '../../reducers/funcReducer'
 import { AppDispatch } from '../..'
 import { useNavigate } from 'react-router-dom'
 
