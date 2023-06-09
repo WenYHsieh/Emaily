@@ -1,11 +1,11 @@
 ### Frontend
 
-React, Redux, Redux-thunk, Redux-form, react-stripe-checkou, tailwindcss
+React, Redux, Redux-thunk, Redux-form, Tailwind CSS
 
-deploy: railway
+deploy: Railway
 
 ### Backend
 
-Exporess, mongoose, passport-google-oauth20, sendgrid, stripe
+Express, Mongoose, passport-google-oauth20, SendGrid, Stripe
 
-deploy: railway
+deploy: Railway
