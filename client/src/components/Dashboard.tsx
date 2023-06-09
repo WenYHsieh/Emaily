@@ -1,9 +1,5 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getSurveys } from '../reducers/funcReducer'
-import { AppDispatch } from '..'
-import { storesType } from '../reducers'
 import SurveyList from './surveys/SurveyList'
 
 const Dashboard = () => {
@@ -15,7 +11,7 @@ const Dashboard = () => {
           xmlns='http://www.w3.org/2000/svg'
           fill='#1677FF'
           viewBox='0 0 24 24'
-          strokeWidth={2}
+          strokeWidth={1}
           stroke='white'
           className='w-20 h-20 fixed bottom-20 right-20 group-hover:opacity-70 transition-color duration-200'
         >

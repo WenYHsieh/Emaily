@@ -11,7 +11,7 @@ const SurveyField = ({
         {label}
       </label>
       <input
-        className='mb-[8px] border-gray-500 border-b-2 px-[16px] py-[8px] w-[100%] focus:outline-none focus:border-blue-500'
+        className='mb-[8px] border-gray-500 border-b-2 px-[16px] py-[8px] w-[100%] focus:outline-none focus:border-blue-500 bg-transparent'
         {...input}
       ></input>
       <div className='h-[24px] mb-[8px] text-red-400'>{touched && error}</div>

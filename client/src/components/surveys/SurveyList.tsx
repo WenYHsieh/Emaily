@@ -18,7 +18,7 @@ const SurveyList = () => {
       const { _id, title, body, dateSent, yes, no } = survey
       return (
         <div
-          className='w-[80%] h-[200px] shadow-md border border-stone-400 my-[16px] rounded-md relative'
+          className='w-[80%] h-[200px] hover:shadow-md border border-stone-300 my-[16px] rounded-md relative hover:border-stone-400 transition-shadow duration-200 bg-slate-100'
           key={_id}
         >
           <div className='text-xl px-[8px] py-[16px]'>{title}</div>

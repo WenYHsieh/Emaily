@@ -3,6 +3,7 @@ import { storesType } from '../reducers'
 import { Link, useNavigate } from 'react-router-dom'
 import Payment from './Payment'
 import React from 'react'
+import emailyLogo from '../../public/emialy-icon.svg'
 
 const Header = () => {
   const navigation = useNavigate()
@@ -42,7 +43,12 @@ const Header = () => {
 
   return (
     <nav className='mx-auto flex items-center justify-between p-4 lg:px-8 shadow-lg text-gray-900 sticky top-0 z-50 w-[100%] backdrop-blur-md bg-rgba(255, 255, 255, 0.2)'>
-      <Link to={`${currentUser ? '/surveys' : '/'}`}>
+      <Link to={`${currentUser ? '/surveys' : '/'}`} className='flex'>
+        <img
+          src={emailyLogo}
+          className='w-[30px] h-[30px] mr-[8px]'
+          alt='logo'
+        />
         <div className='text-lg font-bold'>Emaily</div>
       </Link>
       <div className='flex justify-center items-center'>

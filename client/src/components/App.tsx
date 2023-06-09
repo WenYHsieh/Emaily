@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './app.css'
 import Header from './Header'
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '..'
 import { getCurrentUser } from '../reducers/funcReducer'
